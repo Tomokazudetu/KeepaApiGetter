@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+
+
+
+#table1 thead td{
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+#table1 tbody td{
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.A{
+	 height: 10px;
+	 width:100px;
+}
+
+
+/* 行の色を変更する */
+#table1 thead tr{
+    background-color: #CCCCCC;
+}
+#table1 tbody tr.odd{
+    background-color: #FFFFFF;
+}
+#table1 tbody tr.even{
+    background-color: #EEEEEE;
+}
+
+/* 罫線を引く */
+#table1 thead td:first-child{
+    border-left: 1px solid #404040;
+}
+#table1 thead td{
+    border-top: 1px solid #404040;
+    border-right: 1px solid #404040;
+}
+
+#table1 tbody td:first-child{
+    border-left: 1px solid #404040;
+}
+#table1 tbody td{
+    border-right: 1px solid #404040;
+}

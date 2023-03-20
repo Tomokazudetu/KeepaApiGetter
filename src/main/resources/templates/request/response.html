@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>datatebles site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!--  datatables css -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+
+	<link th:href="@{/css/content.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+	<div class="container">
+		<div class = "row">
+			<div class = "col-3" >
+				<form method = "get" action = "/keepa">
+				<button type = "submit" class = "btn btn-primary"><i class="bi bi-box-arrow-up-left"></i>TOPに戻る</button>
+				</form>
+			</div>
+		</div>
+	</div>
+		
+		
+	<br>
+
+<div class="container">
+	<div class="col-xs-12">
+       <table id="table1" class="table table-bordered">
+            
+            <thead>
+            	<tr>
+
+		        <td th:text = "timestamp"></td>
+              	<td th:text = "lastUpdate"></td>
+                
+                <td th:text = "画像"></td>
+              	
+              	<td th:text = "${csvUnder.get(0)}"></td>
+              	<td th:text = "${csvUnder.get(1)}"></td>
+              	
+              	<td th:text = "現在価格"></td>
+              	<td th:text = "平均価格"></td>
+              	<td th:text = "平均価格30日"></td>
+              	<td th:text = "売れた個数30日"></td>
+              	<td th:text = "売れた個数90日"></td>
+              	<td th:text = "売れた個数180日"></td>
+              	
+              	<td th:text = "${csvUnder.get(2)}"></td>
+              	<td th:text = "${csvUnder.get(3)}"></td>
+              	<td th:text = "${csvUnder.get(4)}"></td>
+              	<td th:text = "${csvUnder.get(5)}"></td>
+              	
+              	<td th:text = "upcList"></td>
+              	<td th:text = "eanList"></td>
+              	
+              	<td th:text = "${csvUnder.get(6)}"></td>
+              	<td th:text = "${csvUnder.get(7)}"></td>
+              	
+              	
+              	<td th:text = "${csvUnderinteger.get(0)}"></td>
+              	<td th:text = "${csvUnderinteger.get(1)}"></td>
+              	<td th:text = "${csvUnderinteger.get(2)}"></td>
+              	<td th:text = "${csvUnderinteger.get(3)}"></td>
+              	<td th:text = "${csvUnderinteger.get(4)}"></td>
+
+            	</tr>
+            </thead>
+        <tbody>
+          <div class="A">    
+            	<tr th:each="info: ${ProductsInto}">
+                
+                <td th:text = "${info.get(0).timestamp}"></td>
+                <td th:text = "${info.get(0).lastUpdate}"></td>
+                
+                <td class= "table-img">
+                <img th:src = "${info.get(0).url}" width="60" height="60"></td>
+                
+                <td th:text = "${info.get(0).asin}"></td>
+                <td th:text = "${info.get(0).title}"></td>
+                <td th:text = "${info.get(0).currentSell}"></td>
+                <td th:text = "${info.get(0).avgSell}"></td>
+                
+                <td th:text = "${info.get(0).avgSell30}"></td>
+                <td th:text = "${info.get(0).salesRankDrops30}"></td>
+                <td th:text = "${info.get(0).salesRankDrops90}"></td>
+                <td th:text = "${info.get(0).salesRankDrops180}"></td>
+                
+                <td th:text = "${info.get(0).manufacturer}"></td>
+                <td th:text = "${info.get(0).brand}"></td>
+                <td th:text = "${info.get(0).partNumber}"></td>
+                <td th:text = "${info.get(0).upcList}"></td>
+                
+                <td th:text = "${info.get(0).eanList}"></td>
+                <td th:text = "${info.get(0).model}"></td>
+                <td th:text = "${info.get(0).productGroup}"></td>
+                
+                <td th:text = "${info.get(0).color}"></td>
+                <td th:text = "${info.get(0).size}"></td>
+                <td th:text = "${info.get(0).packageHeight}"></td>
+                
+                 <td th:text = "${info.get(0).packageLength}"></td>
+                 <td th:text = "${info.get(0).packageWidth}"></td>
+                 <td th:text = "${info.get(0).packageWeight}"></td>    
+                
+                </tr>
+             </div>
+           </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+<!--  datatables js -->
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    $(function(){
+        // datatableの設定を変更
+        $("#table1").DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Japanese.json"
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

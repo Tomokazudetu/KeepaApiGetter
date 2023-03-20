@@ -1,0 +1,59 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.4'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+sourceSets {
+    main {
+        resources.srcDirs("src/main/java", "src/main/resources")
+    }
+}
+
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	 // 追記
+    // https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
+implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '3.0.1'
+runtimeOnly 'org.postgresql:postgresql'
+
+
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.2'
+	 
+	
+	
+	 implementation('org.webjars:jquery:3.5.1')
+    implementation('org.webjars:bootstrap:4.5.3')
+    implementation('org.webjars:webjars-locator:0.40')
+	
+	
+
+	
+	 
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

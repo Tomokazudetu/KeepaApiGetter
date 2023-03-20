@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+          <mapper namespace="com.example.demo.dao.ProductsInfoMapper">
+   	<resultMap id="sampleResult" type="com.example.demo.entity.ProductsInfo">
+   	<result property="url" column="url" />
+	<result property="title" column="title" />
+	<result property="manufacturer" column="manufacturer" />
+	<result property="categories" column="categories" />
+	<result property="edition" column="edition" />
+	<result property="format" column="format" />
+	<result property="packageHeight" column="packageHeight" />
+	<result property="packageLength" column="packageLength" />
+	<result property="packageWidth" column="packageWidth" />
+	<result property="packageWeight" column="packageWeight" />
+	<result property="lastUpdate" column="lastUpdate" />
+	<result property="asin" column="asin" />
+	<result property="upcList" column="upcList" />
+	<result property="eanList" column="eanList" />
+	<result property="productGroup" column="productGroup" />
+	<result property="packageQuantity" column="packageQuantity" />
+	<result property="isAdultProduct" column="isAdultProduct" />
+	<result property="isEligibleForTradeIn" column="isEligibleForTradeIn" />
+	<result property="isEligibleForSuperSaverShipping" column="isEligibleForSuperSaverShipping"/>
+   </resultMap>
+   
+    <select id="selectAll" resultMap="sampleResult">
+        SELECT * FROM products;
+    </select>
+   
+    <insert id="insertSet" parameterType="java.util.List" >
+    
+  insert into products
+    	 	(timestamp,
+			lastUpdate,
+			url,
+			asin,
+			title,
+			currentSell,
+			avgSell,
+			avgSell30,
+			salesRankDrops30,
+			salesRankDrops90,
+			salesRankDrops180,
+			manufacturer,
+			brand,
+			partNumber,
+			upcList,
+			eanList,
+			model,
+			productGroup,
+			color,
+			size ,
+			packageHeight,
+			packageLength,
+			packageWidth,
+			packageWeight)
+    	 	values
+    	 	<foreach collection="Products" item="list" separator=",">
+			(
+    		#{list.timestamp},
+			#{list.lastUpdate},
+			#{list.url},
+			#{list.asin},
+			#{list.title},
+			#{list.currentSell},
+			#{list.avgSell},
+			#{list.avgSell30},
+			#{list.salesRankDrops30},
+			#{list.salesRankDrops90},
+			#{list.salesRankDrops180},
+			#{list.manufacturer},
+			#{list.brand},
+			#{list.partNumber},
+			#{list.upcList},
+			#{list.eanList},
+			#{list.model},
+			#{list.productGroup},
+			#{list.color},
+			#{list.size},
+			#{list.packageHeight},
+			#{list.packageLength},
+			#{list.packageWidth},
+			#{list.packageWeight}
+			)
+			
+			on conflict (asin) 
+			DO NOTHING;
+			
+			
+    	</foreach>
+</insert>
+
+
+
+</mapper>
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
